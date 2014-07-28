@@ -46,6 +46,8 @@ sed -e "s/CASSANDRA_VERSION/$CASSANDRA_VERSION/g" -e "s/TITAN_VERSION/$TITAN_VER
 
 if [ -z $ELASTICSEARCH_VERSION ]; then
   sed -i '/elasticsearch/d' Dockerfile
+else
+  sed -i "s/ELASTICSEARCH_VERSION/$ELASTICSEARCH_VERSION/g" Dockerfile
 fi
 
 sudo docker build -t titan:$TITAN_VERSION .
