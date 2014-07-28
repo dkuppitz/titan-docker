@@ -7,7 +7,7 @@ Quick Start
 git clone https://github.com/dkuppitz/titan-docker.git
 ```
 
-## Create an alias (optional)
+## Create an alias
 
 In your local ```~/.bashrc``` file add this line:
 
@@ -15,7 +15,7 @@ In your local ```~/.bashrc``` file add this line:
 alias titan="sudo -E $TITAN_DOCKER_HOME/titan.sh"
 ```
 
-## Start Titan in a temporary Gremlin REPL
+## Start using Titan in a temporary Gremlin REPL
 
 ```
 $ titan
@@ -27,7 +27,7 @@ It's really just that. This is temporary Gremlin session / container, meaning wh
 $ titan graph_of_the_gods
 ```
 
-## Choose the Titan version
+## Choose a Titan version
 
 By default ```titan-docker``` will use the latest **stable** Titan release. If you want to use an older version or a milestone release, you can do so by providing a third parameter, for example:
 
@@ -37,7 +37,7 @@ $ # to create a temporary container, name it '-'
 $ titan - 0.5.0-M2
 ```
 
-## Choose a different Cassandra- or ElasticSearch-version
+## Choose a different Cassandra/ElasticSearch version
 
 By default ```titan-docker``` will determine and use the recommended version of Cassandra and ElasticSearch for the chosen Titan version. You can override these versions by setting the respective environment variables: ```CASSANDRA_VERSION``` and ```ELASTICSEARCH_VERSION```
 
