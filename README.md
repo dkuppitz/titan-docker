@@ -62,3 +62,7 @@ The directory will be available as ```/mnt``` in your Docker container, thus you
 ```
 gremlin> new File("/mnt/input.txt").eachLine({ def line -> println line })
 ```
+
+## A final note
+
+If you start a new Titan version for the first time, ```titan-docker``` will create the Docker image from scratch. This will take a good amount of time, so please be patient!
