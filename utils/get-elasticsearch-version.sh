@@ -6,7 +6,10 @@ if [ -z $ELASTICSEARCH_VERSION ]; then
   TITAN_VERSION=`./get-titan-version.sh $TITAN_VERSION`
   ELASTICSEARCH_VERSION=`curl -s https://raw.githubusercontent.com/thinkaurelius/titan/$TITAN_VERSION/titan-es/pom.xml | grep -Po '(?<=<elasticsearch.version>).*(?=</elasticsearch.version>)'`
   if [ -z $ELASTICSEARCH_VERSION ]; then
-    ELASTICSEARCH_VERSION=`curl -s https://raw.githubusercontent.com/thinkaurelius/titan/$TITAN_VERSION/pom.xml | grep -Po '(?<=<elasticsearch.version>).*(?=</elasticsearch.version>)'`
+    ELASTICSEARCH_VERSION=`curl -s https://raw.githubusercontent.com/thinkaurelius/titan/$TITAN_VERSION/titan-es/pom.xml | grep -A8 '<artifactId>elasticsearch</artifactId>' | grep -Po '(?<=<version>).*(?=</version>)'`
+    if [ -z $ELASTICSEARCH_VERSION ]; then
+      ELASTICSEARCH_VERSION=`curl -s https://raw.githubusercontent.com/thinkaurelius/titan/$TITAN_VERSION/pom.xml | grep -Po '(?<=<elasticsearch.version>).*(?=</elasticsearch.version>)'`
+    fi
   fi
 fi
 
