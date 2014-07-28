@@ -57,4 +57,5 @@ done
 
 echo -e "Starting Gremlin REPL...\n"
 
-cd /usr/local/titan && bin/gremlin.sh
+cd /usr/local/titan
+bin/gremlin.sh || /bin/bash
