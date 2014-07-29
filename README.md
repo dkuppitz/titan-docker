@@ -7,12 +7,12 @@ Quick Start
 git clone https://github.com/dkuppitz/titan-docker.git
 ```
 
-## Create an alias
+## Symbolic link
 
-In your local ```~/.bashrc``` file add this line:
+Create a symbolic link in ```/usr/local/sbin``` to make the ```titan.sh``` script globally available.
 
 ```
-alias titan="sudo -E $TITAN_DOCKER_HOME/titan.sh"
+sudo ln -s $TITAN_DOCKER_HOME/titan.sh /usr/local/sbin/titan
 ```
 
 ## Start using Titan in a temporary Gremlin REPL
