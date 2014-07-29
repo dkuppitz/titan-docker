@@ -20,9 +20,9 @@ fi
 
 if [ -z $NAME ]; then
   if [ -z $TITAN_DOCKER_MOUNT ]; then
-    docker run --rm -t -i titan:$VERSION
+    docker run --rm --net=none -t -i titan:$VERSION
   else
-    docker run --rm -v `readlink -f $TITAN_DOCKER_MOUNT`:/mnt -t -i titan:$VERSION
+    docker run --rm --net=none -v `readlink -f $TITAN_DOCKER_MOUNT`:/mnt -t -i titan:$VERSION
   fi
 else
   docker ps -a | awk "BEGIN { code = 1 } ; { if (\$2 == \"titan:$VERSION\" && \$NF == \"$NAME\") code = 0 } ; END { exit code }"
@@ -30,9 +30,9 @@ else
     docker start -i $NAME
   else
     if [ -z $TITAN_DOCKER_MOUNT ]; then
-      docker run --name $NAME -t -i titan:$VERSION
+      docker run --net=none --name $NAME -t -i titan:$VERSION
     else
-      docker run --name $NAME -v `readlink -f $TITAN_DOCKER_MOUNT`:/mnt -t -i titan:$VERSION
+      docker run --net=none --name $NAME -v `readlink -f $TITAN_DOCKER_MOUNT`:/mnt -t -i titan:$VERSION
     fi
   fi
 fi
