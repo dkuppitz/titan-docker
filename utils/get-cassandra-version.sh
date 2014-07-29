@@ -7,6 +7,9 @@ if [ -z $CASSANDRA_VERSION ]; then
   CASSANDRA_VERSION=`curl -s https://raw.githubusercontent.com/thinkaurelius/titan/$TITAN_VERSION/pom.xml | grep -Po '(?<=<cassandra.version>).*(?=</cassandra.version>)'`
   if [ -z $CASSANDRA_VERSION ]; then
     CASSANDRA_VERSION=`curl -s https://raw.githubusercontent.com/thinkaurelius/titan/$TITAN_VERSION/titan-cassandra/pom.xml | grep -A1 '<artifactId>cassandra-all</artifactId>' | grep -Po '(?<=<version>).*(?=</version>)'`
+    if [ -z $CASSANDRA_VERSION ]; then
+      CASSANDRA_VERSION=`curl -s https://raw.githubusercontent.com/thinkaurelius/titan/$TITAN_VERSION/pom.xml | grep -A1 '<artifactId>cassandra-all</artifactId>' | grep -Po '(?<=<version>).*(?=</version>)'`
+    fi
   fi
 fi
 
