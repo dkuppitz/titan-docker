@@ -15,7 +15,7 @@ else
     MVN_OPTS="$MVN_OPTS -Ddev.hadoop=1"
     BASE_VERSION=`echo $TITAN_VERSION | awk -F '-' '{print $1}'`
     MILESTONE=`echo $TITAN_VERSION | awk -F '-' '{print $2}'`
-    if [ "$BASE_VERSION" == "0.5.0" -a "$MILESTONE" != "" ]; then
+    if [ "$BASE_VERSION" == "0.5.0" -a "$MILESTONE" == "M3" ]; then
       # Add -Ddev.titan=1|2 maven option
       git cherry-pick 5306e9eb78ef573c7d87327d9cef33775efb3873
     fi

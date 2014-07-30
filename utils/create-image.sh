@@ -48,6 +48,10 @@ if [ "$TITAN_VERSION" != "`echo -e "$TITAN_VERSION\n0.5.0" | sort -rV | head -n1
   sed -i '/hadoop/d' Dockerfile
 fi
 
+if [ "$TITAN_VERSION" == "0.5.0-M1" -o "$TITAN_VERSION" == "0.5.0-M2" ]; then
+  sed -i '/hadoop/d' Dockerfile
+fi
+
 if [ -z $ELASTICSEARCH_VERSION ]; then
   sed -i '/elasticsearch/d' Dockerfile
 else
