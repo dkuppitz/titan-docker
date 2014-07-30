@@ -44,6 +44,10 @@ fi
 cd ..
 sed -e "s/CASSANDRA_VERSION/$CASSANDRA_VERSION/g" -e "s/TITAN_VERSION/$TITAN_VERSION/g" templates/Dockerfile.tpl > Dockerfile
 
+if [ "$TITAN_VERSION" != "`echo -e "$TITAN_VERSION\n0.5.0" | sort -rV | head -n1`" ]; then
+  sed -i '/hadoop/d' Dockerfile
+fi
+
 if [ -z $ELASTICSEARCH_VERSION ]; then
   sed -i '/elasticsearch/d' Dockerfile
 else
