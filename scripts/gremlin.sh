@@ -2,7 +2,8 @@
 
 source /root/.bashrc
 
-nohup /usr/sbin/start-hadoop >/dev/null 2>&1&
+#nohup /usr/sbin/start-hadoop1 >/dev/null 2>&1&
+nohup /usr/sbin/start-hadoop2 >/dev/null 2>&1&
 nohup /usr/sbin/start-cassandra >/dev/null 2>&1&
 nohup /usr/sbin/start-elasticsearch >/dev/null 2>&1&
 

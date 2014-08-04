@@ -18,16 +18,19 @@ RUN cat /root/.ssh/id_dsa.pub >> /root/.ssh/authorized_keys
 RUN chmod 600 /root/.ssh/id_dsa /root/.ssh/authorized_keys
 RUN chmod 644 /root/.ssh/id_dsa.pub
 
-ADD scripts/install-hadoop.sh /tmp/install-hadoop.sh
+#ADD scripts/install-hadoop2.sh /tmp/install-hadoop1.sh
+ADD scripts/install-hadoop2.sh /tmp/install-hadoop2.sh
 ADD scripts/install-cassandra.sh /tmp/install-cassandra.sh
 ADD scripts/install-elasticsearch.sh /tmp/install-elasticsearch.sh
 ADD scripts/install-titan.sh /tmp/install-titan.sh
-ADD scripts/start-hadoop.sh /usr/sbin/start-hadoop
+#ADD scripts/start-hadoop1.sh /usr/sbin/start-hadoop1
+ADD scripts/start-hadoop2.sh /usr/sbin/start-hadoop2
 ADD scripts/start-cassandra.sh /usr/sbin/start-cassandra
 ADD scripts/start-elasticsearch.sh /usr/sbin/start-elasticsearch
 ADD scripts/gremlin.sh /usr/sbin/gremlin
 
-RUN /tmp/install-hadoop.sh
+#RUN /tmp/install-hadoop1.sh
+RUN /tmp/install-hadoop2.sh
 RUN /tmp/install-cassandra.sh CASSANDRA_VERSION
 RUN /tmp/install-elasticsearch.sh ELASTICSEARCH_VERSION
 RUN /tmp/install-titan.sh TITAN_VERSION

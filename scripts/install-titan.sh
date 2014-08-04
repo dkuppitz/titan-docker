@@ -12,7 +12,8 @@ if [ "$TITAN_VERSION" == "0.3.2" ]; then
   git cherry-pick 7bf88ffaf2c5cc4873b08b70ead2849a93a4b2ee
 else
   if [ "$TITAN_VERSION" == "`echo -e "$TITAN_VERSION\n0.5.0" | sort -rV | head -n1`" ]; then
-    MVN_OPTS="$MVN_OPTS -Ddev.hadoop=1"
+    #MVN_OPTS="$MVN_OPTS -Ddev.hadoop=1"
+    MVN_OPTS="$MVN_OPTS -Ddev.hadoop=2"
     BASE_VERSION=`echo $TITAN_VERSION | awk -F '-' '{print $1}'`
     MILESTONE=`echo $TITAN_VERSION | awk -F '-' '{print $2}'`
     if [ "$BASE_VERSION" == "0.5.0" -a "$MILESTONE" == "M3" ]; then
