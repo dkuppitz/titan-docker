@@ -45,15 +45,15 @@ cd ..
 sed -e "s/CASSANDRA_VERSION/$CASSANDRA_VERSION/g" -e "s/TITAN_VERSION/$TITAN_VERSION/g" templates/Dockerfile.tpl > Dockerfile
 
 if [ "$TITAN_VERSION" != "`echo -e "$TITAN_VERSION\n0.5.0" | sort -rV | head -n1`" ]; then
-  sed -i '/hadoop/d' Dockerfile
+  sed -i '/hadoop/d' Dockerfile scripts/gremlin.sh
 fi
 
 if [ "$TITAN_VERSION" == "0.5.0-M1" -o "$TITAN_VERSION" == "0.5.0-M2" ]; then
-  sed -i '/hadoop/d' Dockerfile
+  sed -i '/hadoop/d' Dockerfile scripts/gremlin.sh
 fi
 
 if [ -z $ELASTICSEARCH_VERSION ]; then
-  sed -i '/elasticsearch/d' Dockerfile
+  sed -i '/elasticsearch/d' Dockerfile scripts/gremlin.sh
 else
   sed -i "s/ELASTICSEARCH_VERSION/$ELASTICSEARCH_VERSION/g" Dockerfile
 fi
