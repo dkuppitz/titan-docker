@@ -58,7 +58,5 @@ else
   sed -i "s/ELASTICSEARCH_VERSION/$ELASTICSEARCH_VERSION/g" Dockerfile
 fi
 
-sudo docker build -t titan:$TITAN_VERSION .
-rm -f Dockerfile
 
 cd $PWD
