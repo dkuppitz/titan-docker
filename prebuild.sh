@@ -9,3 +9,11 @@ sed -i '/^#/d' Dockerfile
 
 find . -type f -print | grep -v '^\./\.git/' | grep -Pv 'Dockerfile$' | grep -Po '(?<=^\./).*' | grep -Fxvf keep.txt | xargs rm -f
 find . -type d -empty | grep -v '^\./\.git/' | xargs rm -rf
+
+echo ""
+echo "PUBLISH:"
+echo ""
+echo "  sudo docker build -t <user>/<repo>:<tag> ."
+echo "  sudo docker push <user>/<repo>:<tag>"
+echo "  sudo docker rmi <user>/<repo>:<tag>"
+echo ""
