@@ -18,7 +18,7 @@ docker images | awk "BEGIN { code = 1 } ; { if (\$1 == \"titan\" && \$2 == \"$VE
 
 if [ $? -ne 0 ]; then
   utils/create-image.sh -t $VERSION
-  docker build -t titan:$VERSION .
+  docker build -t titan:$VERSION . && rm Dockerfile
 fi
 
 if [ "$NAME" == "-" ]; then
