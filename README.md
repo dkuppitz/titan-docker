@@ -72,8 +72,8 @@ g = TitanFactory.open("conf/titan-cassandra-es.properties")
 
 mgmt = g.getManagementSystem()
 text = mgmt.makePropertyKey("text").dataType(String.class).make()
-mgmt.buildIndex("vertexByText", Vertex.class).addKey(text).buildMixedIndex("search");
-mgmt.commit();
+mgmt.buildIndex("vertexByText", Vertex.class).addKey(text).buildMixedIndex("search")
+mgmt.commit()
 
 v1 = g.addVertex()
 v1.setProperty("text", "jupiter")
